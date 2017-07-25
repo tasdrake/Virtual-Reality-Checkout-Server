@@ -6,7 +6,7 @@ router.post('/', (req,res,next)=>{
   console.log(req.body)
   var token = req.body.id; // Using Express
   var charge = stripe.charges.create({
-    amount: 1000,
+    amount: req.body.amount * 100,
     currency: "usd",
     description: "Example charge",
     receipt_email: req.body.email,

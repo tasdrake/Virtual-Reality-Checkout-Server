@@ -10,10 +10,10 @@ app.use((req, res, next) => {
   res.header("Access-Control-Allow-Methods", "GET, POST, DELETE, PATCH, PUT" )
   next();
 });
-
 app.use(bodyParser.json())
 app.use(routes)
-
 app.listen(process.env.PORT || 5000)
+
+
 
 module.exports = app;

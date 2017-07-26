@@ -16,4 +16,9 @@ router.post('/', (req,res,next)=>{
   });
 })
 
+router.post('/rg', (req,res, next)=>{
+  var given = req.body;
+  res.send(given);
+})
+
 module.exports = router;

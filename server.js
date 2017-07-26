@@ -12,6 +12,9 @@ app.use((req, res, next) => {
 });
 app.use(bodyParser.json())
 app.use(routes)
+
+
+
 app.listen(process.env.PORT || 5000)
 
 

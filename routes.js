@@ -18,8 +18,9 @@ router.post('/', (req,res,next)=>{
 
 router.post('/rg', (req,res, next)=>{
   var given = req.body;
+  console.log(req)
   console.log(given);
-  res.send(given);
+  res.send('working');
 })
 
 module.exports = router;

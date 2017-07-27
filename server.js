@@ -34,11 +34,6 @@ const longpoll = require("express-longpoll")(app);
 
 var data = { text: "Some data" };
 
-app.post('/rg', (req, res, next)=>{
-  let body = req.body;
-  data = req.body;
-  res.send(data)
-})
 
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
@@ -46,6 +41,15 @@ app.use((req, res, next) => {
   res.header("Access-Control-Allow-Methods", "GET, POST, DELETE, PATCH, PUT" )
   next();
 });
+
+app.use(bodyParser.json());
+app.use(routes);
+
+app.post('/rg', (req, res, next)=>{
+  let body = req.body;
+  data = req.body;
+  res.send(data)
+})
 
 
 longpoll.create("/poll");
@@ -56,8 +60,6 @@ setInterval(function () {
 
 
 
-app.use(bodyParser.json());
-app.use(routes);
 app.listen(process.env.PORT || 5000);
 
 

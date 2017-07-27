@@ -1,8 +1,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
-const stripe = require ("stripe")("sk_test_qqZDHIAgBZFr8pIlFLFQAOna")
-const routes = require('./routes.js');
+//const stripe = require ("stripe")("sk_test_qqZDHIAgBZFr8pIlFLFQAOna")
+//const routes = require('./routes.js');
 const http = require('http').Server(app);
 const io = require('socket.io')(http);
 

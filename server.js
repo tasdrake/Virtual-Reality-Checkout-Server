@@ -7,23 +7,25 @@
 //const http = require('http').Server(app);
 //const io = require('socket.io')(http);
 
-//this code works start
-const express = require('express');
-const socketIO = require('socket.io');
-const PORT = process.env.PORT || 3000;
-//except this start
-const app = express()
-app.listen(3003)
-//except this end
-const server = express().listen(PORT, () => console.log(`Listening on ${ PORT }`));
-const io = socketIO(server);
-
-  io.on('connection', function(socket){
-    console.log('a user connected c');
-    socket.emit('amount', 'pleasework');
-  });
-//this code works end
-
+///////////////////////////////this code works start
+// const express = require('express');
+// const socketIO = require('socket.io');
+// const PORT = process.env.PORT || 3000;
+//////////////////except this start
+// const app = express()
+// app.listen(3003)
+////////////except this end
+// const server = express().listen(PORT, () => console.log(`Listening on ${ PORT }`));
+// const io = socketIO(server);
+//
+//   io.on('connection', function(socket){
+//     console.log('a user connected c');
+//     socket.emit('amount', 'pleasework');
+//   });
+///////////////this code works end
+var Express = require('express'),
+  app = Express.createServer(),
+	io = require('socket.io').listen(app);
 
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");

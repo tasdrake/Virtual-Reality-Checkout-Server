@@ -37,6 +37,7 @@ var data = { text: "Some data" };
 app.post('/rg', (req, res, next)=>{
   let body = req.body;
   data = req.body;
+  res.send(data)
 })
 
 app.use((req, res, next) => {

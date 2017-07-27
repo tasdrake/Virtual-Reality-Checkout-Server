@@ -26,6 +26,6 @@ http.listen(6000, function(){
   console.log('listening on *:6000');
 });
 //
-// app.listen(process.env.PORT || 5000)
+app.listen(process.env.PORT || 5000)
 
 module.exports = app;

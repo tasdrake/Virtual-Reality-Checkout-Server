@@ -34,7 +34,7 @@ app.use(bodyParser.json());
 app.use(routes);
 
 app.post('/rg', (req, res, next)=>{
-  let body = req.body;
+  let body = req.body.cartList;
   let total = 0;
   total = body.reduce((prev, curr)=>{
     return prev+=curr.itemPrice

@@ -7,10 +7,14 @@
 //const http = require('http').Server(app);
 //const io = require('socket.io')(http);
 
-
+//this code works start
 const express = require('express');
 const socketIO = require('socket.io');
 const PORT = process.env.PORT || 3000;
+//except this start
+const app = express()
+app.listen(3003)
+//except this end
 const server = express().listen(PORT, () => console.log(`Listening on ${ PORT }`));
 const io = socketIO(server);
 
@@ -18,17 +22,17 @@ const io = socketIO(server);
     console.log('a user connected c');
     socket.emit('amount', 'pleasework');
   });
+//this code works end
 
 
-
-// app.use((req, res, next) => {
-//   res.header("Access-Control-Allow-Origin", "*");
-//   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-//   res.header("Access-Control-Allow-Methods", "GET, POST, DELETE, PATCH, PUT" )
-//   next();
-// });
-// app.use(bodyParser.json())
-//app.use(routes)
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  res.header("Access-Control-Allow-Methods", "GET, POST, DELETE, PATCH, PUT" )
+  next();
+});
+app.use(bodyParser.json())
+app.use(routes)
 
 //
 // http.listen(6000, function(){

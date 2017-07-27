@@ -7,20 +7,20 @@
 //const http = require('http').Server(app);
 //const io = require('socket.io')(http);
 
-var express = require('express'),
-    http = require('http');
-var app = express();
-var server = http.createServer(app);
-var io = require('socket.io').listen(server);
 
-server.listen(3000);
-app.get('/', (req, res, next)=>{
+const express = require('express');
+const socketIO = require('socket.io');
+const PORT = process.env.PORT || 3000;
+const server = express()
+
+  .use((req, res) => res.sendFile(INDEX) )
+  .listen(PORT, () => console.log(`Listening on ${ PORT }`));
+
   io.on('connection', function(socket){
     console.log('a user connected c');
     socket.emit('amount', 'pleasework');
   });
 
-})
 
 
 // app.use((req, res, next) => {

@@ -12,6 +12,7 @@ const express = require('express');
 const socketIO = require('socket.io');
 const PORT = process.env.PORT || 3000;
 const server = express().listen(PORT, () => console.log(`Listening on ${ PORT }`));
+const io = socketIO(server);
 
   io.on('connection', function(socket){
     console.log('a user connected c');
@@ -36,4 +37,4 @@ const server = express().listen(PORT, () => console.log(`Listening on ${ PORT }`
 //
 //app.listen(process.env.PORT || 5000)
 
-module.exports = app;
+module.exports = server;

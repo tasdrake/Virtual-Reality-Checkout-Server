@@ -22,7 +22,7 @@ const longpoll = require("express-longpoll")(app);
 // module.exports = server;
 ///////////////**********************************************this code works end
 
-var data = { text: "Some data" };
+var data = {price: 0};
 
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");

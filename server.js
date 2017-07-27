@@ -40,4 +40,4 @@ const io = socketIO(server);
 // //
 // app.listen(process.env.PORT || 5000)
 
-module.exports = {app:app, server:server};
+module.exports = server;

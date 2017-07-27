@@ -11,8 +11,9 @@ const bodyParser = require('body-parser');
 const express = require('express');
 const socketIO = require('socket.io');
 const PORT = process.env.PORT || 3000;
-const server = express().listen(PORT, () => console.log(`Listening on ${ PORT }`));
-const io = socketIO(server);
+const app = express()
+app.listen(PORT);
+const io = socketIO(app);
 
   io.on('connection', function(socket){
     console.log('a user connected c');
@@ -21,14 +22,14 @@ const io = socketIO(server);
 
 
 
-server.use((req, res, next) => {
+app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   res.header("Access-Control-Allow-Methods", "GET, POST, DELETE, PATCH, PUT" )
   next();
 });
-server.use(bodyParser.json())
-server.use(routes)
+app.use(bodyParser.json())
+app.use(routes)
 
 //
 // http.listen(6000, function(){

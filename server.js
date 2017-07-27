@@ -1,7 +1,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
-const stripe = require ("stripe")("sk_test_qqZDHIAgBZFr8pIlFLFQAOna")
+var secret = process.env.stripe_secret
+const stripe = require ("stripe")(secret)
 const routes = require('./routes.js');
 const longpoll = require("express-longpoll")(app);
 

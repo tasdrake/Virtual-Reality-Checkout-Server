@@ -11,10 +11,7 @@
 const express = require('express');
 const socketIO = require('socket.io');
 const PORT = process.env.PORT || 3000;
-const server = express()
-
-  .use((req, res) => res.sendFile(INDEX) )
-  .listen(PORT, () => console.log(`Listening on ${ PORT }`));
+const server = express().listen(PORT, () => console.log(`Listening on ${ PORT }`));
 
   io.on('connection', function(socket){
     console.log('a user connected c');

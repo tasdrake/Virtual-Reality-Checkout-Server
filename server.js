@@ -32,8 +32,12 @@ const longpoll = require("express-longpoll")(app);
 // module.exports = server;
 ///////////////**********************************************this code works end
 
+var data = { text: "Some data" };
 
-
+app.post('/rg', (req, res, next)=>{
+  let body = req.body;
+  data = req.body;
+})
 
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
@@ -44,7 +48,6 @@ app.use((req, res, next) => {
 
 
 longpoll.create("/poll");
-var data = { text: "Some data" };
 longpoll.publish("/poll", data);
 setInterval(function () {
     longpoll.publish("/poll", data);

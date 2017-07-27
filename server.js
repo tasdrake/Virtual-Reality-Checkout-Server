@@ -35,6 +35,7 @@ app.use(routes);
 app.post('/rg', (req, res, next)=>{
   let body = req.body;
   data = req.body;
+  console.log(body)
   res.send(data)
 })
 

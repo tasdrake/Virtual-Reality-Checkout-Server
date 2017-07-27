@@ -36,7 +36,7 @@ app.use(routes);
 app.post('/rg', (req, res, next)=>{
   let body = req.body;
   let total = 0;
-  total body.reduce((prev, curr)=>{
+  total = body.reduce((prev, curr)=>{
     return prev+=curr.itemPrice
   },total)
   data = {price:total}

@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const stripe = require ("stripe")("sk_test_qqZDHIAgBZFr8pIlFLFQAOna")
 
-router.post('/', (req,res,next)=>{
+router.post('/api', (req,res,next)=>{
   console.log(req.body)
   var token = req.body.id; // Using Express
   var charge = stripe.charges.create({
@@ -16,11 +16,11 @@ router.post('/', (req,res,next)=>{
   });
 })
 
-router.post('/rg', (req,res, next)=>{
-  var given = req.body;
-  console.log(req)
-  console.log(given);
-  res.send('working');
-})
+// router.post('/rg', (req,res, next)=>{
+//   var given = req.body;
+//   console.log(req)
+//   console.log(given);
+//   res.send('working');
+// })
 
 module.exports = router;

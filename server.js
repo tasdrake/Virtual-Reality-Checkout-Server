@@ -6,7 +6,6 @@ const routes = require('./routes.js');
 const http = require('http').Server(app);
 const io = require('socket.io')(http);
 
-
   io.on('connection', function(socket){
     console.log('a user connected c');
     socket.emit('amount', 'pleasework');
@@ -23,10 +22,10 @@ app.use(bodyParser.json())
 app.use(routes)
 
 
-http.listen(6000, function(){
-  console.log('listening on *:6000');
-});
-
-app.listen(process.env.PORT || 5000)
+// http.listen(6000, function(){
+//   console.log('listening on *:6000');
+// });
+// 
+// app.listen(process.env.PORT || 5000)
 
 module.exports = app;

@@ -19,7 +19,7 @@ app.use((req, res, next) => {
   next();
 });
 app.use(bodyParser.json())
-app.use(routes)
+//app.use(routes)
 
 
 http.listen(6000, function(){

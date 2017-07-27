@@ -1,5 +1,5 @@
 // const express = require('express');
-const bodyParser = require('body-parser');
+// const bodyParser = require('body-parser');
 // const app = express();
 // const server = app.listen(8080)
 //const stripe = require ("stripe")("sk_test_qqZDHIAgBZFr8pIlFLFQAOna")
@@ -11,9 +11,8 @@ const bodyParser = require('body-parser');
 const express = require('express');
 const socketIO = require('socket.io');
 const PORT = process.env.PORT || 3000;
-const app = express()
-app.listen(PORT);
-const io = socketIO(app);
+const server = express().listen(PORT, () => console.log(`Listening on ${ PORT }`));
+const io = socketIO(server);
 
   io.on('connection', function(socket){
     console.log('a user connected c');
@@ -22,14 +21,14 @@ const io = socketIO(app);
 
 
 
-app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  res.header("Access-Control-Allow-Methods", "GET, POST, DELETE, PATCH, PUT" )
-  next();
-});
-app.use(bodyParser.json())
-app.use(routes)
+// app.use((req, res, next) => {
+//   res.header("Access-Control-Allow-Origin", "*");
+//   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+//   res.header("Access-Control-Allow-Methods", "GET, POST, DELETE, PATCH, PUT" )
+//   next();
+// });
+// app.use(bodyParser.json())
+//app.use(routes)
 
 //
 // http.listen(6000, function(){

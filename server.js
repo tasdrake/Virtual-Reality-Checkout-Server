@@ -5,17 +5,6 @@ const stripe = require ("stripe")("sk_test_qqZDHIAgBZFr8pIlFLFQAOna")
 const routes = require('./routes.js');
 const longpoll = require("express-longpoll")(app);
 
-
-
-////////**********************only worked on local host
-// const server = require('http').Server(app);
-// const io = require('socket.io')(server);
-// server.listen(6000, function(){
-//    console.log('listening on *:6000');
-// });
-// //
-////////**********************only worked on local host end
-
 ///////////////////////////////****************************this code works start
 // const express = require('express');
 // const socketIO = require('socket.io');
@@ -34,14 +23,12 @@ const longpoll = require("express-longpoll")(app);
 
 var data = { text: "Some data" };
 
-
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   res.header("Access-Control-Allow-Methods", "GET, POST, DELETE, PATCH, PUT" )
   next();
 });
-
 app.use(bodyParser.json());
 app.use(routes);
 
@@ -51,14 +38,11 @@ app.post('/rg', (req, res, next)=>{
   res.send(data)
 })
 
-
 longpoll.create("/poll");
 longpoll.publish("/poll", data);
 setInterval(function () {
     longpoll.publish("/poll", data);
 }, 3000);
-
-
 
 app.listen(process.env.PORT || 5000);
 

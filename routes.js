@@ -16,10 +16,11 @@ router.post('/api', (req,res,next)=>{
   });
 })
 
-router.get('/api', (req,res,next)=>{
-  res.send('hello')
-})
-
-
+// router.post('/rg', (req,res, next)=>{
+//   var given = req.body;
+//   console.log(req)
+//   console.log(given);
+//   res.send('working');
+// })
 
 module.exports = router;

@@ -14,11 +14,13 @@ var server = http.createServer(app);
 var io = require('socket.io').listen(server);
 
 server.listen(3000);
-
+app.get('/', (req, res, next)=>{
   io.on('connection', function(socket){
     console.log('a user connected c');
     socket.emit('amount', 'pleasework');
   });
+
+})
 
 
 // app.use((req, res, next) => {

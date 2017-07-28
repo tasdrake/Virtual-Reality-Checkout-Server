@@ -8,6 +8,7 @@ const longpoll = require("express-longpoll")(app);
 
 let data = {price: 0};
 
+
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
@@ -42,7 +43,10 @@ app.post('/reset', (req, res, next) => {
 
 longpoll.create("/poll");
 longpoll.publish("/poll", data);
-setInterval(() => longpoll.publish("/poll", data), 3000);
+setInterval(() => longpoll.publish("/poll", data), 3000)
+
+
+};
 
 app.listen(process.env.PORT || 5000);
 

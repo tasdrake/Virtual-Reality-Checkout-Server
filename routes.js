@@ -12,11 +12,12 @@ router.post('/api', (req, res, next) => {
   })
   .returning('*')
   .then((donation) => {
+    console.log('logging inside knex:', donation, body)
     knex('donors')
     .insert({
       firstName: 'sean',
       lastName: req.body.lastName,
-      email: req.body.email,
+      email: req.body.email
     })
     .then(() => res.send('Donation Posted'));
   });

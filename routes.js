@@ -13,10 +13,10 @@ router.post('/api', (req, res, next) => {
   }, function(err, charge) {
     res.send(charge)
   });
-  
+
   knex('donation')
     .insert({
-      token: charge.id,
+      card_token: charge.id,
       amount: charge.amount
     })
     .returning('*')

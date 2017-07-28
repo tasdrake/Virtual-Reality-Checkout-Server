@@ -17,6 +17,10 @@ app.use((req, res, next) => {
 app.use(bodyParser.json());
 app.use(routes);
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> a97cdef3b46f07feec6c7ade4aaa71fe4e56739d
 app.post('/rg', (req, res, next) => {
   const body = req.body.cartList;
   let total = 0;
@@ -28,6 +32,10 @@ app.post('/rg', (req, res, next) => {
 app.post('/reset', (req, res, next) => {
   data.price = 0;
 });
+<<<<<<< HEAD
+=======
+
+>>>>>>> a97cdef3b46f07feec6c7ade4aaa71fe4e56739d
 
 longpoll.create("/poll");
 longpoll.publish("/poll", data);

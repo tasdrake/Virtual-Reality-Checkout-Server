@@ -26,6 +26,11 @@ app.post('/rg', (req, res, next) => {
   res.send(data);
 });
 
+app.post('/button', (req, res, next) => {
+  data.price = req.body.donation;
+  res.send(data);
+});
+
 app.post('/reset', (req, res, next) => {
   data.price = 0;
 });

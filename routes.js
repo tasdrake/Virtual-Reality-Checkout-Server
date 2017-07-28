@@ -14,7 +14,7 @@ router.post('/api', (req, res, next) => {
   .then((donation) => {
     knex('donors')
     .insert({
-      firstName: body.firstName,
+      firstName: 'sean',
       lastName: body.lastName,
       email: body.email,
       donation_id: donation.id

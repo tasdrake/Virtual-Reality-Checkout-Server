@@ -44,11 +44,9 @@ longpoll.create("/poll");
 longpoll.publish("/poll", data);
 setInterval(() => {
   if(data.price === 0){
-
     longpoll.publish("/poll", data), 3000)
   }
   else{
-    res.end()
   }
 
 };

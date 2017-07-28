@@ -48,7 +48,7 @@ longpoll.publish("/poll", data);
 setInterval(() => longpoll.publish("/poll", data), 3000)
 
 
-};
+
 
 app.listen(process.env.PORT || 5000);
 

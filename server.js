@@ -38,7 +38,7 @@ app.post('/button', (req, res, next) => {
 app.get('/confirm', (req, res, next) => {
   console.log('you are in confirm')
   console.log(data.price);
-  res.send(data.price);
+  res.send(data);
 });
 
 app.post('/reset', (req, res, next) => {

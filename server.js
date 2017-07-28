@@ -36,7 +36,8 @@ app.get('/confirm', (req, res, next) => {
   res.send(data.price);
 });
 
-app.post('/reset', (req, res, next) => {
+app.get('/reset', (req, res, next) => {
+  console.log('reset');
   data.price = 0;
 });
 

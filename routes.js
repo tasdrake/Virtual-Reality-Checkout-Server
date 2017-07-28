@@ -15,9 +15,8 @@ router.post('/api', (req, res, next) => {
     knex('donors')
     .insert({
       firstName: 'sean',
-      lastName: body.lastName,
-      email: body.email,
-      donation_id: donation.id
+      lastName: req.body.lastName,
+      email: req.body.email,
     })
     .then(() => res.send('Donation Posted'));
   });

@@ -14,6 +14,7 @@ router.post('/api', (req, res, next) => {
     res.send(charge)
   });
   console.log(charge);
+  
 });
 
 module.exports = router;

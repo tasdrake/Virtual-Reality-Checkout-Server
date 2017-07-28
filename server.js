@@ -31,7 +31,9 @@ app.post('/rg', (req, res, next) => {
 });
 
 app.post('/button', (req, res, next) => {
+  console.log(req.body);
   data.price = req.body.donation;
+  console.log(data.price)
   res.send(data);
 });
 

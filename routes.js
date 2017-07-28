@@ -5,7 +5,7 @@ const knex = require('./knex')
 router.post('/api', (req, res, next) => {
   var token = req.body.id;
   var body = req.body;
-  knex('donation')
+  knex('donations')
   .insert({
     card_token: body.id,
     amount: body.amount

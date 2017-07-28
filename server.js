@@ -31,6 +31,10 @@ app.post('/button', (req, res, next) => {
   res.send(data);
 });
 
+app.get('/confirm', (req, res, next) => {
+  res.send(data.price);
+});
+
 app.post('/reset', (req, res, next) => {
   data.price = 0;
 });

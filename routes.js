@@ -13,8 +13,7 @@ router.post('/api', (req, res, next) => {
   }, function(err, charge) {
     res.send(charge)
   });
-  console.log(charge);
-  
 });
+
 
 module.exports = router;

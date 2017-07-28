@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
-var secret = process.env.stripe_secret;
+const secret = process.env.stripe_secret;
 const stripe = require ("stripe")(secret);
 const routes = require('./routes.js');
 const longpoll = require("express-longpoll")(app);
@@ -17,6 +17,7 @@ app.use((req, res, next) => {
 app.use(bodyParser.json());
 app.use(routes);
 
+<<<<<<< HEAD
 app.post('/rg', (req, res, next) => {
   const body = req.body.cartList;
   let total = 0;
@@ -28,6 +29,18 @@ app.post('/rg', (req, res, next) => {
 app.post('/reset', (req, res, next) => {
   data.price = 0;
 });
+=======
+app.post('/rg', (req, res, next)=>{
+  let body = req.body.cartList;
+  let total = 0;
+  total = body.reduce((prev, curr)=>{
+    return prev+=curr.itemPrice
+  },total)
+  data = {price:total}
+  console.log(body)
+  res.send(data)
+})
+>>>>>>> 71de814c48722d7a24517aa768335d71a6fda2ee
 
 longpoll.create("/poll");
 longpoll.publish("/poll", data);

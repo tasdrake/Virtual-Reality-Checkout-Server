@@ -17,7 +17,8 @@ router.post('/api', (req, res, next) => {
     .insert({
       firstName: 'sean',
       lastName: req.body.lastName,
-      email: req.body.email
+      email: req.body.email,
+      donation_id: donation[0].id
     })
     .then(() => res.send('Donation Posted'));
   });

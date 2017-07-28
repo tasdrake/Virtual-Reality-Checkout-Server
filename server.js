@@ -21,7 +21,8 @@ app.use(routes);
 app.post('/rg', (req, res, next) => {
   const body = req.body.cartList;
   let total = 0;
-  total = body.reduce((prev, curr) => prev+=parseInt(curr.itemPrice), total);
+  total = body.reduce((prev, curr) => {
+  return prev + parseInt(curr.itemPrice)}, total);
   data.price = total;
   res.send(data);
 });

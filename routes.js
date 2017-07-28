@@ -1,9 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const stripe = require ("stripe")("sk_test_qqZDHIAgBZFr8pIlFLFQAOna")
+const stripe = require ("stripe")("sk_test_qqZDHIAgBZFr8pIlFLFQAOna");
 
-router.post('/api', (req,res,next)=>{
-  console.log(req.body)
+router.post('/api', (req, res, next) => {
   var token = req.body.id; // Using Express
   var charge = stripe.charges.create({
     amount: req.body.amount * 100,
@@ -14,13 +13,8 @@ router.post('/api', (req,res,next)=>{
   }, function(err, charge) {
     res.send(charge)
   });
-})
-
-// router.post('/rg', (req,res, next)=>{
-//   var given = req.body;
-//   console.log(req)
-//   console.log(given);
-//   res.send('working');
-// })
+  console.log(charge);
+  
+});
 
 module.exports = router;

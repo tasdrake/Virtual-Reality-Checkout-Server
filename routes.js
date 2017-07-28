@@ -11,25 +11,24 @@ router.post('/api', (req, res, next) => {
     receipt_email: req.body.email,
     source: token,
   }, function(err, charge) {
-    res.send(charge)
+    knex('donation')
+      .insert({
+        card_token: charge.id,
+        amount: charge.amount
+      })
+      .returning('*')
+      .then((donation) => {
+        knex('donors')
+          .insert({
+            firstName: charge.firstName,
+            lastName: charge.lastName,
+            email: charge.email,
+            donation_id: donation.id
+          })
+          .then(() => res.send('Donation Posted'));
+      });
+    res.send(charge);
   });
-
-  knex('donation')
-    .insert({
-      card_token: charge.id,
-      amount: charge.amount
-    })
-    .returning('*')
-    .then((donation) => {
-      knex('donors')
-        .insert({
-          firstName: charge.firstName,
-          lastName: charge.lastName,
-          email: charge.email,
-          donation_id: donation.id
-        })
-        .then(() => res.send('Donation Posted'));
-    });
 });
 
 module.exports = router;

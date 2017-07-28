@@ -6,7 +6,7 @@ const stripe = require ("stripe")(secret);
 const routes = require('./routes.js');
 const longpoll = require("express-longpoll")(app);
 
-let data = { price: 0 };
+let data = { price: 10 };
 
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");

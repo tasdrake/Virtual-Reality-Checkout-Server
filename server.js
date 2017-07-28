@@ -6,7 +6,7 @@ const stripe = require ("stripe")(secret);
 const routes = require('./routes.js');
 const longpoll = require("express-longpoll")(app);
 
-let data = { price: 10 };
+let data = { price: 0 };
 
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
@@ -42,7 +42,16 @@ app.post('/reset', (req, res, next) => {
 
 longpoll.create("/poll");
 longpoll.publish("/poll", data);
-setInterval(() => longpoll.publish("/poll", data), 3000);
+setInterval(() => {
+  if(data.price === 0){
+
+    longpoll.publish("/poll", data), 3000)
+  }
+  else{
+    res.end()
+  }
+
+};
 
 app.listen(process.env.PORT || 5000);
 
